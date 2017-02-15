@@ -1,13 +1,26 @@
+'''
+CS458
+Project 2
+Abraham Cheng
+
+'''
+
+
 import re
 
-
-def acro_search():
-    acronyms = []
-    for x in re.findall(PATTERN,test_string):
+acronyms = []
+PATTERN = r'[A-Z][A-Z][A-Z]+'
+def acro_search(input_string):
+    #acronyms = []
+    for x in re.findall(PATTERN,input_string):
         x.strip()
         if (len(x)>1):
             acronyms.append(x)
     return (acronyms)
+
+def acro_iter(input):
+    qwer = re.finditer(PATTERN,input)
+    return qwer
 
 def backTrackAll(C, X, Y, i, j):
     if i == 0 or j == 0:
@@ -46,6 +59,39 @@ def lcs(a, b):
             y -= 1
     return result
 
+'''
 test_string = "DOE Department of Energy FBI CIA  Rawr rAwr RAwe RaWR RAWr rAWR sigNATURE"
 PATTERN = r'[A-Z][A-Z][A-Z]+'
-print(acro_search())
+print(acro_search(test_string))
+
+
+PATTERN = r'[A-Z][A-Z][A-Z]+'
+testfile = open('acrotextfile.txt', 'r')
+text_in_file = testfile.read()
+testfile.close()
+print(acro_search(text_in_file))
+
+testfile1 = open('acrotextfile2.txt', 'r')
+text_in_file = testfile1.read()
+testfile1.close()
+print(acro_search(text_in_file))
+'''
+
+'''
+#for match in regex1.finditer(text_in_file):
+#    print ("%s: %s" %(match.start(), match.group(1)))
+
+acro_len_list = []
+for j in acronym:
+    acro_len_list.append((len(acronym)*2))
+for i in m.group():
+    if x = m.group()
+    lcs(m.group(), acronym)
+
+'''
+testfile1 = open('acrotextfile2.txt', 'r')
+text_in_file = testfile1.read()
+testfile1.close()
+regex1 = re.compile(PATTERN)
+for m in regex1.finditer(text_in_file):
+    print (m.start(), m.group())
